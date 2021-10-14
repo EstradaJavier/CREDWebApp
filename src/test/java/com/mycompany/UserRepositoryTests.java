@@ -53,11 +53,11 @@ public class UserRepositoryTests {
         Integer userId = 1;
         Optional<User> optionalUser = repo.findById(userId);
         User user = optionalUser.get();
-        user.setPassword("Javier528");
+        user.setPassword("Javier525");
         repo.save(user);
 
         User updatedUser = repo.findById(userId).get();
-        Assertions.assertThat(updatedUser.getPassword()).isEqualTo("Javier528");
+        Assertions.assertThat(updatedUser.getPassword()).isEqualTo("Javier525");
 
 
     }
