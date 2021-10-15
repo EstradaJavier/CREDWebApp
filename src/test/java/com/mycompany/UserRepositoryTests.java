@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.sql.SQLOutput;
 import java.util.Optional;
 
 @DataJpaTest
@@ -47,7 +48,7 @@ public class UserRepositoryTests {
         }
     }
 
-    //  ------------  Thirst Testing Update
+    //  ------------  Thirsd Testing Update
     @Test
     public void testUpdate() {
         Integer userId = 1;
@@ -60,6 +61,23 @@ public class UserRepositoryTests {
         Assertions.assertThat(updatedUser.getPassword()).isEqualTo("Javier525");
 
 
+    }
+//  ------------  Fourth Testing for Receiving user by ID
+    @Test
+    public void testGet() {
+        Integer userId = 2;
+        Optional<User> optionalUser = repo.findById(userId);
+        Assertions.assertThat(optionalUser).isPresent();
+        System.out.println(optionalUser.get());
+    }
+
+    @Test
+    public void testDelete() {
+        Integer userId = 3;
+        repo.deleteById(userId);
+
+        Optional<User> optionalUser = repo.findById(userId);
+        Assertions.assertThat(optionalUser).isNotPresent();
     }
 
 
