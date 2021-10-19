@@ -1,5 +1,19 @@
 package com.mycompany.user;
 
-public class UserService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
+public class UserService {
+    @Autowired private UserRepositroy repo;
+
+    public List<User> listAll() {
+        return (List<User>) repo.findAll();
+    }
+
+    public void save(User user) {
+        repo.save(user);
+    }
 }
